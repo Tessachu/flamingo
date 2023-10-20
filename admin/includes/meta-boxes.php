@@ -293,8 +293,8 @@ function flamingo_inbound_consent_meta_box( $post ) {
 
 <?php foreach ( (array) $consent as $key => $value ) : ?>
 <tr>
-<td class="field-title"><?php echo esc_html( $key ); ?></td>
-<td class="field-value"><?php echo wp_kses( $value, wp_kses_allowed_html( 'data' ) ); ?></td>
+<td class="field-title"><?php echo apply_filters('flamingo_display_field_key', esc_html($key), $key, $post); ?></td>
+<td class="field-value"><?php echo apply_filters('flamingo_display_field_value', wp_kses($value, wp_kses_allowed_html('data')), $value, $key, $post); ?></td>
 </tr>
 <?php endforeach; ?>
 
@@ -310,8 +310,8 @@ function flamingo_inbound_recaptcha_meta_box( $post ) {
 
 <?php foreach ( (array) $post->recaptcha as $key => $value ) : ?>
 <tr>
-<td class="field-title"><?php echo esc_html( $key ); ?></td>
-<td class="field-value"><?php echo esc_html( json_encode( $value, JSON_PRETTY_PRINT ) ); ?></td>
+<td class="field-title"><?php echo apply_filters('flamingo_display_field_key', esc_html($key), $key, $post); ?></td>
+<td class="field-value"><?php echo apply_filters('flamingo_display_field_value', esc_html(json_encode($value, JSON_PRETTY_PRINT)), $value, $key, $post); ?></td>
 </tr>
 <?php endforeach; ?>
 
@@ -327,8 +327,8 @@ function flamingo_inbound_meta_meta_box( $post ) {
 
 <?php foreach ( (array) $post->meta as $key => $value ) : ?>
 <tr>
-<td class="field-title"><?php echo esc_html( $key ); ?></td>
-<td class="field-value"><?php echo flamingo_htmlize( $value ); ?></td>
+<td class="field-title"><?php echo apply_filters('flamingo_display_field_key', esc_html($key), $key, $post); ?></td>
+<td class="field-value"><?php echo apply_filters('flamingo_display_field_value', flamingo_htmlize($value), $value, $key, $post); ?></td>
 </tr>
 <?php endforeach; ?>
 
