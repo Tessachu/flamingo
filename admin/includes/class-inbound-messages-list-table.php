@@ -384,7 +384,7 @@ class Flamingo_Inbound_Messages_List_Table extends WP_List_Table {
 	}
 
 	protected function column_from( $item ) {
-		return esc_html( $item->from );
+		return esc_html(apply_filters('flamingo_display_field_value', $item->from, $item->from));
 	}
 
 	protected function column_channel( $item ) {
