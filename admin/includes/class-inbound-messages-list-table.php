@@ -288,8 +288,9 @@ class Flamingo_Inbound_Messages_List_Table extends WP_List_Table {
 	}
 
 	protected function column_subject( $item ) {
+		$subject = apply_filters('flamingo_display_field_value', $item->subject, $item->subject);
 		if ( $this->is_trash ) {
-			return sprintf( '<strong>%s</strong>', esc_html( $item->subject ) );
+			return sprintf( '<strong>%s</strong>', esc_html( $subject ) );
 		}
 
 		if ( current_user_can( 'flamingo_edit_inbound_message', $item->id() ) ) {
@@ -306,14 +307,14 @@ class Flamingo_Inbound_Messages_List_Table extends WP_List_Table {
 				esc_url( $edit_link ),
 				esc_attr( sprintf(
 					__( 'Edit &#8220;%s&#8221;', 'flamingo' ),
-					$item->subject
+					$subject
 				) ),
-				esc_html( $item->subject )
+				esc_html( $subject )
 			);
 		}
 
 		return sprintf( '<strong>%1$s</strong>',
-			esc_html( $item->subject )
+			esc_html( $subject )
 		);
 	}
 
