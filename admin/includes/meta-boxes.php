@@ -270,8 +270,8 @@ function flamingo_inbound_fields_meta_box( $post ) {
 
 <?php foreach ( (array) $post->fields as $key => $value ) : ?>
 <tr>
-<td class="field-title"><?php echo esc_html( $key ); ?></td>
-<td class="field-value"><?php echo flamingo_htmlize( $value ); ?></td>
+<td class="field-title"><?php echo apply_filters('flamingo_display_field_key', esc_html($key), $key, $post); ?></td>
+<td class="field-value"><?php echo apply_filters('flamingo_display_field_value', flamingo_htmlize($value), $value, $key, $post); ?></td>
 </tr>
 <?php endforeach; ?>
 
